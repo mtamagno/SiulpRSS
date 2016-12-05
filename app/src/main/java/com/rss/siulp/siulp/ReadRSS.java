@@ -7,6 +7,8 @@ import android.provider.DocumentsContract;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -78,16 +81,19 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
             @Override
             public int compare(FeedItem feedItem, FeedItem t1) {
                 String format = "EEE, dd MMM yyyy HH:mm:ss";
-                SimpleDateFormat formatter = new SimpleDateFormat(format);
+                SimpleDateFormat formatter = new SimpleDateFormat(format, Locale.ENGLISH);
                 Date date1 =  null;
                 Date date2 = null;
+                String FirstDate,SecondDate;
+                FirstDate = feedItem.getPubDate().toString();
+                SecondDate = t1.getPubDate().toString();
                 try{
-                    date1 =  formatter.parse(feedItem.getPubDate());
+                    date1 =  formatter.parse(FirstDate);
                 } catch(Exception e){
                     System.out.println(e.getMessage());
                 }
                 try{
-                    date2 =  formatter.parse(t1.getPubDate());
+                    date2 =  formatter.parse(SecondDate);
                 } catch(Exception e){
                     System.out.println(e.getMessage());
                 }
@@ -115,7 +121,7 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
                             item.setTitle(current.getTextContent());
                         } else if (current.getNodeName().equalsIgnoreCase("description")) {
                             String upToNCharacters = current.getTextContent().substring(0, Math.min(current.getTextContent().length(), 150));
-                            item.setDescription(upToNCharacters + "...");
+                            item.setDescription(upToNCharacters.replace("L'articolo", "") + "...");
                         } else if (current.getNodeName().equalsIgnoreCase("pubDate")) {
                             item.setPubDate(current.getTextContent().replace(" +0000", ""));
                         } else if (current.getNodeName().equalsIgnoreCase("link")) {
