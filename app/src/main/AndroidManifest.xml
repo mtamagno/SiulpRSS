@@ -7,19 +7,23 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Siulp RSS"
+        android:label="Siulp Ancona - News"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".RSSActivity"
-            android:label="Siulp RSS"
+            android:label="Siulp Ancona - News"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsDetails"></activity>
+        <activity android:name=".NewsDetails" />
+        <activity android:name=".AppPreferences"
+                  android:label="@string/title_preferences"
+                  android:parentActivityName=".RSSActivity"></activity>
     </application>
 
 </manifest>

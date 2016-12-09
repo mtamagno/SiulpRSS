@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory
+            android:title="IMPOSTAZIONI">
+            <SwitchPreference
+                android:title="Italia"
+                android:summary="News dal Siulp Italiano"
+                android:key="italia"
+                android:defaultValue="true" />
+            <SwitchPreference
+                android:title="Ancona"
+                android:summary="News dal Siulp di Ancona"
+                android:key="ancona"
+                android:defaultValue="true"/>
+            </PreferenceCategory>
+
+</PreferenceScreen>

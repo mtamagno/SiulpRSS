@@ -42,19 +42,28 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
     ProgressDialog progress;
     ArrayList<FeedItem> feeds;
     RecyclerView recyclerView;
+    Boolean ancona;
+    Boolean italia;
     URL url;
-    public ReadRSS(Context context, RecyclerView recyclerView){
+
+    public ReadRSS(Context context, RecyclerView recyclerView, Boolean ancona, Boolean italia){
         this.recyclerView = recyclerView;
         this.context = context;
+        this.ancona = ancona;
+        this.italia = italia;
         feeds = new ArrayList<>();
         progress = new ProgressDialog(context);
         progress.setMessage("Caricamento dei feed...");
     }
     @Override
     protected Void doInBackground(Void... voids) {
-        ProcessXml(GetData());
-        address = "http://www.siulp.it/feed";
-        ProcessXml(GetData());
+        if(ancona) {
+            ProcessXml(GetData());
+        }
+        if(italia) {
+            address = "http://www.siulp.it/feed";
+            ProcessXml(GetData());
+        }
 
         return null;
     }
@@ -75,6 +84,7 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new VerticalSpace(50));
     }
+
 
     void sortList(){
         Collections.sort(feeds, new Comparator<FeedItem>() {
@@ -120,7 +130,7 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
                         if (current.getNodeName().equalsIgnoreCase("title")) {
                             item.setTitle(current.getTextContent());
                         } else if (current.getNodeName().equalsIgnoreCase("description")) {
-                            String upToNCharacters = current.getTextContent().substring(0, Math.min(current.getTextContent().length(), 150));
+                            String upToNCharacters = current.getTextContent().substring(0, Math.min(current.getTextContent().length(), 200));
                             item.setDescription(upToNCharacters.replace("L'articolo", "") + "...");
                         } else if (current.getNodeName().equalsIgnoreCase("pubDate")) {
                             item.setPubDate(current.getTextContent().replace(" +0000", ""));
