@@ -7,20 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-<<<<<<< HEAD
         android:label="SIULP News"
-=======
-        android:label="Siulp Ancona - News"
->>>>>>> origin/master
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".RSSActivity"
-<<<<<<< HEAD
             android:label="SIULP News"
-=======
-            android:label="Siulp Ancona - News"
->>>>>>> origin/master
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewsDetails" />
-<<<<<<< HEAD
         <activity
             android:name=".AppPreferences"
             android:label="@string/title_preferences"
@@ -52,11 +43,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rss.siulp.siulp.AboutListActivity" />
         </activity>
-=======
-        <activity android:name=".AppPreferences"
-                  android:label="@string/title_preferences"
-                  android:parentActivityName=".RSSActivity"></activity>
->>>>>>> origin/master
     </application>
 
 </manifest>

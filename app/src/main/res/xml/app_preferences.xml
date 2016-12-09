@@ -3,22 +3,13 @@
         <PreferenceCategory
             android:title="IMPOSTAZIONI">
             <SwitchPreference
-<<<<<<< HEAD
                 android:title="Nazionale"
                 android:summary="News dal SIULP Nazionale"
-=======
-                android:title="Italia"
-                android:summary="News dal Siulp Italiano"
->>>>>>> origin/master
                 android:key="italia"
                 android:defaultValue="true" />
             <SwitchPreference
                 android:title="Ancona"
-<<<<<<< HEAD
                 android:summary="News dal SIULP Ancona"
-=======
-                android:summary="News dal Siulp di Ancona"
->>>>>>> origin/master
                 android:key="ancona"
                 android:defaultValue="true"/>
             </PreferenceCategory>
