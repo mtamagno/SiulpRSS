@@ -29,7 +29,11 @@ public class RSSActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.tamagno.it/"));
+=======
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.siulpancona.it/"));
+>>>>>>> origin/master
                 startActivity(browserIntent);
             }
         });
@@ -68,11 +72,14 @@ public class RSSActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, AppPreferences.class);
             startActivity(intent);
+<<<<<<< HEAD
             return true;
         }
         if(id == R.id.action_info){
             Intent intent = new Intent(this, AboutListActivity.class);
             startActivity(intent);
+=======
+>>>>>>> origin/master
             return true;
         }
         return super.onOptionsItemSelected(item);
