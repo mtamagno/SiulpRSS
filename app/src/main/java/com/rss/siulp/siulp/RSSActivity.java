@@ -35,10 +35,6 @@ public class RSSActivity extends AppCompatActivity {
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-<<<<<<< HEAD
-=======
-        loadPreferences();
->>>>>>> origin/master
         readRSS = new ReadRSS(this,recyclerView,ancona,italia);
         readRSS.execute();
     }
@@ -84,12 +80,7 @@ public class RSSActivity extends AppCompatActivity {
 
     private void loadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-<<<<<<< HEAD
         ancona = sharedPreferences.getBoolean("ancona",true);
         italia = sharedPreferences.getBoolean("italia",true);
-=======
-        ancona = sharedPreferences.getBoolean("ancona",false);
-        italia = sharedPreferences.getBoolean("italia",false);
->>>>>>> origin/master
     }
 }

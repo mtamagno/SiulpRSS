@@ -2,9 +2,5 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#0c1865</color>
-<<<<<<< HEAD
     <color name="colorAccent">#0096D7</color>
-=======
-    <color name="colorAccent">#495fff</color>
->>>>>>> origin/master
 </resources>
