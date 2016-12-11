@@ -47,10 +47,15 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
     URL url;
 
     public ReadRSS(Context context, RecyclerView recyclerView, Boolean ancona, Boolean italia){
+<<<<<<< HEAD
         this.ancona = ancona;
         this.italia = italia;
+=======
+>>>>>>> origin/master
         this.recyclerView = recyclerView;
         this.context = context;
+        this.ancona = ancona;
+        this.italia = italia;
         feeds = new ArrayList<>();
         progress = new ProgressDialog(context);
         progress.setMessage("Caricamento dei feed...");
