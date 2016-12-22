@@ -58,9 +58,9 @@ public class DummyContent {
         switch (position){
             case 1:
                 builder.append("APPLICATION: ");
-                builder.append("\n Siulp rss reader");
+                builder.append("\n SIULP rss reader");
                 builder.append("\n\nVERSION: ");
-                builder.append("\n version 0.1");
+                builder.append("\n version 2.3");
                 break;
             case 2:
                 builder.append("Developer ");

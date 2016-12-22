@@ -56,7 +56,7 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
         progress.setMessage("Caricamento dei feed...");
     }
     @Override
-    protected Void doInBackground(Void... voids) {
+    public Void doInBackground(Void... voids) {
         if(ancona) {
             ProcessXml(GetData());
         }
@@ -139,8 +139,6 @@ public class ReadRSS extends AsyncTask<Void,Void,Void> {
                         }
                     }
                     if(item.getTitle()!=null && item.getDescription() != null && item.getLink() != null && item.getPubDate() != null) {
-                        String url = "http://www.torinosiulp.it/images/stories/siulp_logo_nuovo.jpg";
-                        item.setThumbnailUrl(url);
                         if (item.getTitle() != null)
                             feeds.add(item);
                         if (item.getTitle() != null)

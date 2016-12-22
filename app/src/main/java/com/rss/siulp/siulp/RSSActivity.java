@@ -2,11 +2,13 @@ package com.rss.siulp.siulp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 public class RSSActivity extends AppCompatActivity {
     boolean ancona,italia;
     RecyclerView recyclerView;
+    SwipeRefreshLayout mSwipeRefreshLayout;
     ReadRSS readRSS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class RSSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rss);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.content_rss);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +40,21 @@ public class RSSActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         readRSS = new ReadRSS(this,recyclerView,ancona,italia);
         readRSS.execute();
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshContent();
+            }
+        });
     }
+
+
+    private void refreshContent(){
+        super.onRestart();
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        }
 
     @Override
     public void onRestart()
@@ -82,5 +99,11 @@ public class RSSActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         ancona = sharedPreferences.getBoolean("ancona",true);
         italia = sharedPreferences.getBoolean("italia",true);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
     }
 }
